@@ -1,0 +1,58 @@
+*quick-tex.txt*						  Replace tex in-place
+
+Author : Luma <world@luma.email>
+License: MIT <https://github.com/LumaKernel/quick-tex.vim/blob/main/LICENSE>
+
+Notice:
+- This repository includes modified version of uhyo<uhyo@uhy.ooo>'s source
+  code under the MIT License.
+
+==============================================================================
+CONTENTS						  *quick-tex-contents*
+
+INTRODUCTION					      |quick-tex-introduction|
+PRE-DEFINED RECIPES				    |quick-tex-predef-recipes|
+  SPACE					      |quick-tex-predef-recipes-space|
+  SEMISEMI				   |quick-tex-predef-recipes-semisemi|
+
+==============================================================================
+INTRODUCTION					      *quick-tex-introduction*
+
+Replaces tex in-place.
+Currently implemented minimal functions just to meet my cases.
+
+==============================================================================
+INSTALL							   *quick-tex-install*
+
+Please install "denops.vim".
+
+https://github.com/vim-denops/denops.vim
+
+==============================================================================
+PRE-DEFINED RECIPES				    *quick-tex-predef-recipes*
+
+------------------------------------------------------------------------------
+SPACE					      *quick-tex-predef-recipes-space*
+In insert mode, when space is entered, replaces since last space till cursor.
+>
+	augroup quick-tex-init
+	  " example to enable it for all buffers
+	  au BufNew * call denops#notify("quick-tex", "recipe:space", [])
+	augroup END
+<
+
+------------------------------------------------------------------------------
+SEMISEMI				   *quick-tex-predef-recipes-semisemi*
+In insert mode, when ";;" is entered, replaces the line till cursor.
+>
+	augroup quick-tex-init
+	  " example to enable it for all buffers
+	  au BufNew * call denops#notify("quick-tex", "recipe:semisemi", [])
+
+	  " to enable it for some specific filetypes
+	  au FileType text call denops#notify("quick-tex", "recipe:semisemi", [])
+	augroup END
+<
+
+==============================================================================
+vim:tw=78:ts=8:noet:ft=help:norl
